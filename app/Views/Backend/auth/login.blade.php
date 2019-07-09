@@ -33,17 +33,18 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                <form>
+                <form method="post" action="{{route('backend.post.login')}}">
+                    @csrf
                     <h1>Login Form</h1>
                     <div>
-                        <input type="text" class="form-control" placeholder="Username" required="" />
+                        <input type="email" name="email" class="form-control" placeholder="Email" required="" />
                     </div>
                     <div>
-                        <input type="password" class="form-control" placeholder="Password" required="" />
+                        <input type="password" name="password" class="form-control" placeholder="Password" required="" />
                     </div>
                     <div>
-                        <a class="btn btn-default submit" href="index.html">Log in</a>
-                        <a class="reset_pass" href="#">Lost your password?</a>
+                        <button type="submit" class="btn btn-default submit">Log in</button>
+                        <a classLoginCon="reset_pass" href="#">Lost your password?</a>
                     </div>
 
                     <div class="clearfix"></div>

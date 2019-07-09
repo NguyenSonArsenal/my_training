@@ -20,4 +20,9 @@ class LoginController
     {
         return view('backend.auth.login');
     }
+
+    public function login()
+    {
+        $params = Input::all();
+    }
 }

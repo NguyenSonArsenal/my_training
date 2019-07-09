@@ -5,6 +5,7 @@ if (!function_exists('authRoutes')) {
     {
         // Authentication Routes...
         Route::get('login', 'Auth\LoginController@showLoginForm')->name($area . '.login');
+        Route::post('login', 'Auth\LoginController@login')->name($area . '.post.login');
     }
 }
 
