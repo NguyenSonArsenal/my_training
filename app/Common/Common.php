@@ -1,11 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 if (!function_exists('authRoutes')) {
     function authRoutes($area)
     {
         // Authentication Routes...
         Route::get('login', 'Auth\LoginController@showLoginForm')->name($area . '.login');
         Route::post('login', 'Auth\LoginController@login')->name($area . '.post.login');
+        Route::get('logout', 'Auth\LoginController@logout')->name($area . '.logout');
     }
 }
 
@@ -30,5 +33,19 @@ if (!function_exists('loadImageBackEnd')) {
     function loadImageBackEnd($path)
     {
         echo asset( '/images/backend/' . ltrim($path, '/'));
+    }
+}
+
+if (!function_exists('adminGuard')) {
+    function adminGuard()
+    {
+        return Auth::guard('admins');
+    }
+}
+
+if (!function_exists('userGuard')) {
+    function userGuard()
+    {
+        return Auth::guard('users');
     }
 }
