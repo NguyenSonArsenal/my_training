@@ -24,11 +24,11 @@ class LoginController extends BackendController
     {
         $credentials = $request->only('email', 'password');
         if (adminGuard()->attempt($credentials)) {
-            return $this->renderJson();
+            return redirect()->route('dashboard');
         }
         $errors = ['login_error' => transMessage('login_error')];
         $this->setMessage($errors);
-        return $this->renderErrorJson();
+        return $this->_backWithError(['errors' => transMessage('login_error')]);
     }
 
     public function logout()
