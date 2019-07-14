@@ -23,6 +23,8 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php loadFileBackend('vendors/build.min.css');?>" rel="stylesheet">
+    <link href="<?php loadFileBackend('system.css');?>" rel="stylesheet">
+    <link href="<?php loadFileBackend('autoload/login.css');?>" rel="stylesheet">
 </head>
 
 <body class="login">
@@ -36,15 +38,25 @@
                 <form method="post" action="{{route('backend.post.login')}}">
                     @csrf
                     <h1>Login Form</h1>
+
+                    <div class="error-validate">
+                        <ul class="list-errors">
+                            @foreach ($errors->all() as $error)
+                                <li class="error-item">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+
                     <div>
-                        <input type="email" name="email" class="form-control" placeholder="Email" required="" />
+                        <input type="email" name="email" class="form-control" placeholder="Email" required=""
+                               value="{{old('email')}}"/>
                     </div>
                     <div>
                         <input type="password" name="password" class="form-control" placeholder="Password" required="" />
                     </div>
                     <div>
                         <button type="submit" class="btn btn-default submit">Log in</button>
-                        <a classLoginCon="reset_pass" href="#">Lost your password?</a>
+                        <a class="reset_pass" href="#">Lost your password?</a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -118,4 +130,9 @@
 <script src="<?php loadFileBackend('xhr.js')?>"></script>
 
 <!-- Common -->
+<script src="<?php loadFileBackend('common.js');?>"></script>
+
+<!-- System -->
 <script src="<?php loadFileBackend('system.js');?>"></script>
+
+<script src="<?php loadFileBackend('autoload/login.js');?>"></script>

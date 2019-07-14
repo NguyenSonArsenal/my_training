@@ -49,3 +49,17 @@ if (!function_exists('userGuard')) {
         return Auth::guard('users');
     }
 }
+
+if (!function_exists('getSystemConfig')) {
+    function getSystemConfig($key, $default)
+    {
+        return config('systems.' . $key, $default);
+    }
+}
+
+if (!function_exists('transMessage')) {
+    function transMessage($key, $default = '')
+    {
+        return empty(trans('messages.' . $key)) ? $default : trans('messages.' . $key);
+    }
+}
