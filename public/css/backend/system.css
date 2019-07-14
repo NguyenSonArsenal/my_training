@@ -9,3 +9,38 @@
     margin-bottom: 15px;
 }
 
+.btn_custom {
+    width: 75px;
+    margin-left: 15px;
+    background: #00aebb;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 3px;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn_custom:hover, .btn_custom_action:hover {
+    color: #fff;
+}
+
+.btn_custom_action {
+    display: inline-block;
+    background: #00aebb;
+    width: 70px;
+    margin-right: 5px;
+    height: 25px;
+    line-height: 13px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    color: white;
+    text-align: center;
+}
+
+.btn_view {
+    background: #47ccd6;
+}
+
+.btn_del {
+    background: #7d7d7d;
+}
