@@ -20,6 +20,9 @@
     <link href="<?php loadFileBackend('vendors/build.min.css');?>" rel="stylesheet">
     <link href="<?php loadFileBackend('vendors/build.min.css');?>" rel="stylesheet">
 
+    <!-- Common -->
+    <link href="<?php loadFileBackend('common.css');?>" rel="stylesheet">
+
     <!-- System -->
     <link href="<?php loadFileBackend('system.css');?>" rel="stylesheet">
 

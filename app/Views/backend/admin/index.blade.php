@@ -37,7 +37,11 @@
                                             <td>
                                                 <a class="btn_custom_action" href="">View</a>
                                                 <a class="btn_custom_action btn_view" href="">Edit</a>
-                                                <a class="btn_custom_action btn_del" href="">Delete</a>
+                                                <form action="{{route('admin.destroy', $entity->id)}}" method="post" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn_custom_action btn_del">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

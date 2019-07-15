@@ -1,0 +1,13 @@
+/* ========== -- /Background color, color -- ========== */
+.bg_grey {
+    background: #7d7d7d;
+}
+
+.color_red {
+    color: #df1c22;
+}
+/* ========== -- /END -- ========== */
+
+.d-inline {
+    display: inline;
+}

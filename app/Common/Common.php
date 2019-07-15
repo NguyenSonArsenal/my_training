@@ -51,9 +51,16 @@ if (!function_exists('userGuard')) {
 }
 
 if (!function_exists('getSystemConfig')) {
-    function getSystemConfig($key, $default)
+    function getSystemConfig($key, $default = '')
     {
         return config('systems.' . $key, $default);
+    }
+}
+
+if (!function_exists('getConfig')) {
+    function getConfig($key, $default = '')
+    {
+        return config('config.' . $key, $default);
     }
 }
 
@@ -61,5 +68,12 @@ if (!function_exists('transMessage')) {
     function transMessage($key, $default = '')
     {
         return empty(trans('messages.' . $key)) ? $default : trans('messages.' . $key);
+    }
+}
+
+if (!function_exists('getCurrentId')) {
+    function getCurrentId()
+    {
+        return adminGuard()->user()->id;
     }
 }
