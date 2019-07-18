@@ -2,16 +2,12 @@
     width: 50px;
 }
 
-.list-admin .headings .th_name {
-    width: 250px;
+.list-admin .headings .th_name, .list-admin .headings .th_email  {
+    width: 200px;
 }
 
 .list-admin .headings .th_avatar {
     width: 100px;
-}
-
-.list-admin .headings .th_email {
-    width: 250px;
 }
 
 .list-admin .headings .th_role {

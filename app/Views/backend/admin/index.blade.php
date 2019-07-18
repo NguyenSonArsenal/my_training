@@ -23,6 +23,8 @@
                                         <th class="th_email column-title">Email </th>
                                         <th class="th_avatar column-title">Avatar </th>
                                         <th class="th_role column-title">Role_type </th>
+                                        <th class="th_role column-title">Created_by </th>
+                                        <th class="th_role column-title">Updated_by </th>
                                         <th class="column-title no-link last"><span class="nobr">Action</span></th>
                                     </tr>
                                 </thead>
@@ -33,10 +35,12 @@
                                             <td>{{ $entity->name }} </td>
                                             <td>{{ $entity->email }} </td>
                                             <td>{{ $entity->avatar }}</td>
-                                            <td>{{ $entity->role_type }}</td>
+                                            <td>{{ $entity->getRoleTypeAlias() }}</td>
+                                            <td>{{ $entity->getInsertUpdateId($entity->ins_id) }}</td>
+                                            <td>{{ $entity->getInsertUpdateId($entity->upd_id) }}</td>
                                             <td>
                                                 <a class="btn_custom_action" href="">View</a>
-                                                <a class="btn_custom_action btn_view" href="">Edit</a>
+                                                <a class="btn_custom_action btn_view" href="{{route('admin.edit', ['id' => $entity->getKey()])}}">Edit</a>
                                                 <form action="{{route('admin.destroy', $entity->id)}}" method="post" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')

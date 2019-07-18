@@ -64,6 +64,13 @@ if (!function_exists('getConfig')) {
     }
 }
 
+if (!function_exists('getConstant')) {
+    function getConstant($key, $default = '')
+    {
+        return config('constant.' . $key, $default);
+    }
+}
+
 if (!function_exists('transMessage')) {
     function transMessage($key, $default = '')
     {
@@ -75,5 +82,12 @@ if (!function_exists('getCurrentId')) {
     function getCurrentId()
     {
         return adminGuard()->user()->id;
+    }
+}
+
+if (!function_exists('getValueInputText')) {
+    function getValueInputText($data, $default = "")
+    {
+        return !empty($data) ? $data : $default;
     }
 }

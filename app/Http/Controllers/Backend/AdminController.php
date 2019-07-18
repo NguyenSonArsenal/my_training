@@ -24,7 +24,24 @@ class AdminController  extends BackendController
 
     public function create()
     {
-        return view('backend.admin.create');
+        $entity = new Admin();
+
+        $viewDatas = [
+            'entity' => $entity
+        ];
+
+        return view('backend.admin.create', $viewDatas);
+    }
+
+    public function edit($id)
+    {
+        $entity = Admin::findOrFail($id);
+
+        $viewDatas = [
+            'entity' => $entity
+        ];
+
+        return view('backend.admin.edit', $viewDatas);
     }
 
     public function store()
@@ -32,6 +49,21 @@ class AdminController  extends BackendController
         $entity = new Admin();
         $params = Input::all();
         $params['ins_id'] = getCurrentId();
+        $entity->fill($params);
+        $entity->save();
+        return redirect()->route('admin.index');
+    }
+
+    public function update($id)
+    {
+        $entity = Admin::findOrFail($id);
+        $params = Input::all();
+        $params['upd_id'] = getCurrentId();
+
+        if (array_key_exists('password', $params) && !$params['password']) {
+            unset($params['password']);
+        }
+
         $entity->fill($params);
         $entity->save();
         return redirect()->route('admin.index');
