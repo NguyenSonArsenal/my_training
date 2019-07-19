@@ -39,7 +39,7 @@
                                             <td>{{ $entity->getInsertUpdateId($entity->ins_id) }}</td>
                                             <td>{{ $entity->getInsertUpdateId($entity->upd_id) }}</td>
                                             <td>
-                                                <a class="btn_custom_action" href="">View</a>
+                                                <a class="btn_custom_action" href="{{route('admin.show', ['id' => $entity->getKey()])}}">View</a>
                                                 <a class="btn_custom_action btn_view" href="{{route('admin.edit', ['id' => $entity->getKey()])}}">Edit</a>
                                                 <form action="{{route('admin.destroy', $entity->id)}}" method="post" class="d-inline">
                                                     @csrf

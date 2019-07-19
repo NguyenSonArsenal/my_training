@@ -25,3 +25,7 @@
 .list-admin td {
     border: 1px solid #ccc;
 }
+
+.form-detail-confirm-admin .form-group {
+    margin-bottom: 20px;
+}

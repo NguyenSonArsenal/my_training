@@ -78,10 +78,17 @@ if (!function_exists('transMessage')) {
     }
 }
 
-if (!function_exists('getCurrentId')) {
-    function getCurrentId()
+if (!function_exists('getCurrentAdminId')) {
+    function getCurrentAdminId()
     {
         return adminGuard()->user()->id;
+    }
+}
+
+if (!function_exists('getCurrentAdminName')) {
+    function getCurrentAdminName()
+    {
+        return adminGuard()->user()->name;
     }
 }
 

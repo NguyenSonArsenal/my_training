@@ -28,4 +28,14 @@ trait BasePresenter
         }
         return $object->name;
     }
+
+    public function getCreatedAt()
+    {
+        return $this->{getSystemConfig('created_at_column')};
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->{getSystemConfig('updated_at_column')};
+    }
 }

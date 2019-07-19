@@ -33,6 +33,27 @@ class AdminController  extends BackendController
         return view('backend.admin.create', $viewDatas);
     }
 
+    public function store()
+    {
+        $entity = new Admin();
+        $params = Input::all();
+        $params['ins_id'] = getCurrentId();
+        $entity->fill($params);
+        $entity->save();
+        return redirect()->route('admin.index');
+    }
+
+    public function show($id)
+    {
+        $entity = Admin::findOrFail($id);
+
+        $viewDatas = [
+            'entity' => $entity
+        ];
+
+        return view('backend.admin.show', $viewDatas);
+    }
+
     public function edit($id)
     {
         $entity = Admin::findOrFail($id);
@@ -44,25 +65,21 @@ class AdminController  extends BackendController
         return view('backend.admin.edit', $viewDatas);
     }
 
-    public function store()
-    {
-        $entity = new Admin();
-        $params = Input::all();
-        $params['ins_id'] = getCurrentId();
-        $entity->fill($params);
-        $entity->save();
-        return redirect()->route('admin.index');
-    }
-
     public function update($id)
     {
         $entity = Admin::findOrFail($id);
         $params = Input::all();
-        $params['upd_id'] = getCurrentId();
+        $params['upd_id'] = getCurrentAdminId();
 
-        if (array_key_exists('password', $params) && !$params['password']) {
-            unset($params['password']);
+        if (array_key_exists('password', $params)) {
+            if (!$params['password']) {
+                unset($params['password']);
+            } else {
+                $params['password'] = bcrypt($params['password']);
+            }
         }
+
+        $params['upd_datetime'] = now()->format('Y-m-d H:i:s');
 
         $entity->fill($params);
         $entity->save();
