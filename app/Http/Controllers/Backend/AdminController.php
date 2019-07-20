@@ -13,7 +13,7 @@ class AdminController  extends BackendController
 
     public function index()
     {
-        $entities = Admin::all();
+        $entities = Admin::where(getSystemConfig('deleted_at_column'), getConstant('ACTIVE'))->get();
 
         $viewDatas = [
             'entities' => $entities
@@ -37,7 +37,8 @@ class AdminController  extends BackendController
     {
         $entity = new Admin();
         $params = Input::all();
-        $params['ins_id'] = getCurrentId();
+        $params['ins_id'] = getCurrentAdminId();
+        $params['password'] = storePassword($params['password']);
         $entity->fill($params);
         $entity->save();
         return redirect()->route('admin.index');
@@ -75,7 +76,7 @@ class AdminController  extends BackendController
             if (!$params['password']) {
                 unset($params['password']);
             } else {
-                $params['password'] = bcrypt($params['password']);
+                $params['password'] = storePassword($params['password']);
             }
         }
 
@@ -89,8 +90,8 @@ class AdminController  extends BackendController
     public function destroy($id)
     {
         $entity = Admin::findOrFail($id);
-        $entity->delete();
-
+        $entity->fill([getSystemConfig('deleted_at_column', 'del_flag') => getConstant('NONE_ACTIVE', 1)]);
+        $entity->save();
 //        Session::flash('message', 'Successfully deleted the nerd!');
         return redirect()->back();
     }

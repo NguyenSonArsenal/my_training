@@ -17,43 +17,66 @@
                         <div class="table-responsive">
                             <table class="list-admin table table-striped jambo_table bulk_action">
                                 <thead>
-                                    <tr class="headings">
-                                        <th class="column-title">Id </th>
-                                        <th class="th_name column-title">Name </th>
-                                        <th class="th_email column-title">Email </th>
-                                        <th class="th_avatar column-title">Avatar </th>
-                                        <th class="th_role column-title">Role_type </th>
-                                        <th class="th_role column-title">Created_by </th>
-                                        <th class="th_role column-title">Updated_by </th>
-                                        <th class="column-title no-link last"><span class="nobr">Action</span></th>
-                                    </tr>
+                                <tr class="headings">
+                                    <th class="column-title">Id</th>
+                                    <th class="th_name column-title">Name</th>
+                                    <th class="th_email column-title">Email</th>
+                                    <th class="th_avatar column-title">Avatar</th>
+                                    <th class="th_role column-title">Role_type</th>
+                                    <th class="th_role column-title">Created_by</th>
+                                    <th class="th_role column-title">Updated_by</th>
+                                    <th class="column-title no-link last"><span class="nobr">Action</span></th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($entities as $entity)
-                                        <tr class="tr_admin even pointer">
-                                            <td>{{ $entity->id }}</td>
-                                            <td>{{ $entity->name }} </td>
-                                            <td>{{ $entity->email }} </td>
-                                            <td>{{ $entity->avatar }}</td>
-                                            <td>{{ $entity->getRoleTypeAlias() }}</td>
-                                            <td>{{ $entity->getInsertUpdateId($entity->ins_id) }}</td>
-                                            <td>{{ $entity->getInsertUpdateId($entity->upd_id) }}</td>
-                                            <td>
-                                                <a class="btn_custom_action" href="{{route('admin.show', ['id' => $entity->getKey()])}}">View</a>
-                                                <a class="btn_custom_action btn_view" href="{{route('admin.edit', ['id' => $entity->getKey()])}}">Edit</a>
-                                                <form action="{{route('admin.destroy', $entity->id)}}" method="post" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn_custom_action btn_del">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($entities as $entity)
+                                    <tr class="tr_admin even pointer">
+                                        <td>{{ $entity->id }}</td>
+                                        <td>
+                                            <a href="{{route('admin.show', ['id' => $entity->getKey()])}}">{{ $entity->name }} </a>
+                                        </td>
+                                        <td>{{ $entity->email }} </td>
+                                        <td>{{ $entity->avatar }}</td>
+                                        <td>{{ $entity->getRoleTypeAlias() }}</td>
+                                        <td>
+                                            <a href="{{route('admin.show', ['id' => $entity->getKey()])}}">
+                                                {{ $entity->getInsertUpdateId($entity->ins_id) }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.show', ['id' => $entity->getKey()])}}">
+                                                {{ $entity->getInsertUpdateId($entity->upd_id) }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <ul class="list-action">
+                                                <li>
+                                                    <a class="btn_show btn_custom_action"
+                                                       href="{{route('admin.show', ['id' => $entity->getKey()])}}">View</a>
+                                                </li>
+
+                                                <li>
+                                                    @if($entity->isEdited())
+                                                        <a class="bg_green btn_custom_action"
+                                                           href="{{route('admin.edit', ['id' => $entity->getKey()])}}">Edit</a>
+                                                    @endif
+                                                </li>
+
+                                                <li>
+                                                    @if($entity->isDeleted())
+                                                        <button name="delete"
+                                                                data-form-action="{{ route('admin.destroy', $entity->id) }}"
+                                                                type="submit" class="btn_custom_action bg_grey">Delete
+                                                        </button>
+                                                    @endif
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
                 </div>
             </div>

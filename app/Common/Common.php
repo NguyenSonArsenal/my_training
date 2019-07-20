@@ -92,9 +92,32 @@ if (!function_exists('getCurrentAdminName')) {
     }
 }
 
+if (!function_exists('getCurrentAdminEntity')) {
+    function getCurrentAdminEntity()
+    {
+        return adminGuard()->user();
+    }
+}
+
 if (!function_exists('getValueInputText')) {
     function getValueInputText($data, $default = "")
     {
         return !empty($data) ? $data : $default;
+    }
+}
+
+if (!function_exists('toSql')) {
+
+    function toSql($query)
+    {
+        return $query->toSql();
+    }
+}
+
+if (!function_exists('storePassword')) {
+
+    function storePassword($password)
+    {
+        return bcrypt($password);
     }
 }

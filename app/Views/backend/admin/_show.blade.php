@@ -76,6 +76,11 @@
 
                             <div class="form-group">
                                 <label class="text-right col-md-3 col-sm-3 col-xs-12">
+                                    @if ($entity->isEdited())
+                                        <a class="btn_custom" href="{{route('admin.edit', ['id' => $entity->getKey()])}}">Edit</a>
+                                    @endif
+                                </label>
+                                <label class="text-left col-md-3 col-sm-3 col-xs-12">
                                     <a class="btn_custom bg_grey" href="{{route('admin.index')}}">Back</a>
                                 </label>
                             </div>

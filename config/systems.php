@@ -6,5 +6,6 @@ return [
     'frontend_alias' => env('FRONTEND_ALIAS', 'admin'),
 
     'created_at_column' => 'ins_datetime',
-    'updated_at_column' => 'upd_datetime'
+    'updated_at_column' => 'upd_datetime',
+    'deleted_at_column' => 'del_flag'
 ];

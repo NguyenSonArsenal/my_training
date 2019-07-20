@@ -16,6 +16,7 @@
         <!-- page content -->
         <div class="right_col" role="main">
             @yield('content')
+            @include('layouts.backend.elements._modal')
         </div>
         <!-- /page content -->
 

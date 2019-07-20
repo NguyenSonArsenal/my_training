@@ -12,7 +12,7 @@ class Admin extends Authenticatable
     use AdminPresenter;
 
     protected $fillable = [
-        'name', 'email', 'password', 'role_type', 'ins_id', 'upd_id', 'upd_datetime'
+        'name', 'email', 'password', 'role_type', 'ins_id', 'upd_id', 'upd_datetime', 'del_flag'
     ];
 
     public $timestamps = false;

@@ -29,3 +29,8 @@
 .form-detail-confirm-admin .form-group {
     margin-bottom: 20px;
 }
+
+.list-action li {
+    display: inline-block;
+    width: 75px;
+}

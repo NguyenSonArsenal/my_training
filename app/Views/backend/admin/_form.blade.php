@@ -52,7 +52,7 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select name="role_type" class="form-control">
                                         <option>Choose option</option>
-                                        @foreach(getConfig('role_type_admin') as $key => $value)
+                                        @foreach($entity->getRoleType() as $key => $value)
                                             <option value="{{ $key }}" {{ ($entity->role_type == $key) ? ' selected' : '' }}>{{ $value }}</option>
                                         @endforeach
                                     </select>

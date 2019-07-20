@@ -2,7 +2,7 @@
 
 return [
     'role_type_admin' => [ // reference to constant
-        1 => 'SuperAdmin',
-        2 => 'Admin'
+        getConstant('ADMIN_TYPE_SUPER_ADMIN', 1) => 'SuperAdmin',
+        getConstant('ADMIN_TYPE_ADMIN', 2)  => 'Admin'
     ]
 ];
