@@ -36,17 +36,6 @@ if (!function_exists('loadImageBackEnd')) {
     }
 }
 
-if (!function_exists('loadImageFrontend')) {
-
-    /**
-     * @param $path
-     */
-    function loadImageFrontend($path)
-    {
-        echo asset( '/images/frontend/' . ltrim($path, '/'));
-    }
-}
-
 if (!function_exists('adminGuard')) {
     function adminGuard()
     {

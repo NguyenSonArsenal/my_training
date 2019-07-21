@@ -5,7 +5,5 @@ return [
     'ADMIN_TYPE_ADMIN' => 2,
 
     'ACTIVE' => 0,
-    'NONE_ACTIVE' => 1,
-
-    'BACKEND_ALIAS' => env('BACKEND_ALIAS')
+    'NONE_ACTIVE' => 1
 ];
