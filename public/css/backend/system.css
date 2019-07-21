@@ -9,6 +9,10 @@
     margin-bottom: 15px;
 }
 
+.error {
+    border: 1px solid #df1c22;
+}
+
 .btn_custom {
     width: 75px;
     margin-left: 15px;
@@ -53,4 +57,12 @@ button.btn_custom, button.btn_custom_action {
 ul {
     list-style: none;
     padding-left: 0;
+}
+
+ul.list-errors {
+    list-style-type: square;
+}
+
+form .form-group {
+    margin-bottom: 15px;
 }

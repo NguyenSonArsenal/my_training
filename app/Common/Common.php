@@ -121,3 +121,13 @@ if (!function_exists('storePassword')) {
         return bcrypt($password);
     }
 }
+
+if (!function_exists('borderError')) {
+
+    function borderError($errors, $key)
+    {
+        return !empty($errors->first($key)) ? 'error' : '';
+    }
+}
+
+
