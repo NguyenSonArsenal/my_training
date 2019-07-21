@@ -1,0 +1,71 @@
+#loading-image {
+  position: fixed;
+  z-index: 999;
+  height: 150px;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
+.mt-15 {
+  margin-top: 15px; }
+
+.max-w-100 {
+  max-width: 100%; }
+
+.transition {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+
+.h-32 {
+  height: 32px
+}
+
+/** Font size */
+.f12 {
+  font-size: 12px;
+}
+
+.f14 {
+  font-size: 14px;
+}
+.f16 {
+  font-size: 16px;
+}
+.f18 {
+  font-size: 18px;
+}
+.f20 {
+  font-size: 20px;
+}
+.f22 {
+  font-size: 22px;
+}
+/** End font size */
+
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Color */
+.color-black-default {
+  color: #212529;
+}
+
+.color-green {
+  color: #39B683;
+}
+
+.bg-green {
+  background: #39B683;
+}
+
+.color-grey {
+  color: #818C9D;
+}
+/* End color */

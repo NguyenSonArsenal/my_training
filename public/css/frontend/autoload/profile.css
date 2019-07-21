@@ -1,0 +1,75 @@
+.message {
+    margin-bottom: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.message .user .avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 500rem;
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.message .description {
+    display: flex;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #EBF8F2;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.07);
+    min-height: 220px;
+    align-items: center;
+}
+
+.message.blue .description::after {
+    background-color: #DFEFFD;
+}
+
+.message .description::after {
+    content: " ";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    margin: auto;
+    border-radius: 5px;
+    background-color: #EBF8F2;
+    transform: rotate(45deg);
+    box-shadow: 5px 5px 8px 0px rgba(0, 0, 0, 0.06);
+}
+
+.message svg path {
+    fill: #df1c22;
+}
+
+.message  .user {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.message .user .name {
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.message .user .position {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.info .skill {
+    padding-left: 60px;
+}
+
+@media screen and (max-width: 768px) {
+    .message {
+        margin-top: 20px;
+    }
+}

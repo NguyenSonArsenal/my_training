@@ -46,6 +46,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($this->isHttpException($exception) && !str_contains($_SERVER['REQUEST_URI'], getConstant('BACKEND_ALIAS'))) {
+            if ($exception->getStatusCode() == 404) {
+                return response()->view('layouts.frontend.404', [], 404);
+            }
+        }
+
         return parent::render($request, $exception);
     }
 }
