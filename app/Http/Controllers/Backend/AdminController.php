@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Model\Entities\Admin;
+use App\Validators\AdminValidator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class AdminController  extends BackendController
@@ -13,7 +15,7 @@ class AdminController  extends BackendController
 
     public function index()
     {
-        $entities = Admin::where(getSystemConfig('deleted_at_column'), getConstant('ACTIVE'))->get();
+        $entities = Admin::withActive()->get();
 
         $viewDatas = [
             'entities' => $entities
@@ -33,7 +35,7 @@ class AdminController  extends BackendController
         return view('backend.admin.create', $viewDatas);
     }
 
-    public function store()
+    public function store(AdminValidator $adminValidator)
     {
         $entity = new Admin();
         $params = Input::all();

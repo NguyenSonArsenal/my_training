@@ -3,12 +3,10 @@
 namespace App\Model\Entities;
 
 use App\Model\Presenters\AdminPresenter;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Model\Base\Auth\AuthTmp;
 
-class Admin extends Authenticatable
+class Admin extends AuthTmp
 {
-    use Notifiable;
     use AdminPresenter;
 
     protected $fillable = [

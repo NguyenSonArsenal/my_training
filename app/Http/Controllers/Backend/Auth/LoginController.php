@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend\Auth;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\AdminUserRequest;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Backend\BackendController;
 
@@ -26,8 +25,6 @@ class LoginController extends BackendController
         if (adminGuard()->attempt($credentials)) {
             return redirect()->route('dashboard');
         }
-        $errors = ['login_error' => transMessage('login_error')];
-        $this->setMessage($errors);
         return $this->_backWithError(['errors' => transMessage('login_error')]);
     }
 
@@ -35,12 +32,5 @@ class LoginController extends BackendController
     {
         adminGuard()->logout();
         return redirect()->route('backend.login');
-    }
-
-    protected function _backWithError($errors)
-    {
-        return $this->_back()
-            ->withErrors($errors)// send back all errors to the login form
-            ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
     }
 }

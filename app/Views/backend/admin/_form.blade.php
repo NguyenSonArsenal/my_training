@@ -10,6 +10,14 @@
                     <div class="clearfix"></div>
                 </div>
 
+                <div class="error-validate">
+                    <ul class="list-errors">
+                        @foreach ($errors->all() as $error)
+                            <li class="error-item">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+
                 <div class="x_content">
                     <div class="x_content">
                         <form action="{{$entity->getActionFormStoreUpdate('admin')}}" class="form-horizontal form-label-left" method="POST">
@@ -20,7 +28,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Name
                                     <span class="required color_red icon-required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="name" value="{{getValueInputText($entity->name)}}" type="text"
+                                    <input name="name" value="{{old('name') ? old('name') : getValueInputText($entity->name)}}" type="text"
                                            class="form-control"
                                            placeholder="Enter your name">
                                 </div>
@@ -30,7 +38,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Email
                                     <span class="required color_red icon-required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="email" value="{{getValueInputText($entity->email)}}" type="text"
+                                    <input name="email" value="{{old('email') ? old('email') :getValueInputText($entity->email)}}" type="text"
                                            class="form-control"
                                            placeholder="Enter your email">
                                 </div>
@@ -51,7 +59,7 @@
                                     <span class="required color_red icon-required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select name="role_type" class="form-control">
-                                        <option>Choose option</option>
+                                        <option value="">Choose option</option>
                                         @foreach($entity->getRoleType() as $key => $value)
                                             <option value="{{ $key }}" {{ ($entity->role_type == $key) ? ' selected' : '' }}>{{ $value }}</option>
                                         @endforeach
