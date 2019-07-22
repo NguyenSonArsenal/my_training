@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Model\Entities\Admin;
+use App\Repositories\AdminRepository;
 use App\Validators\AdminValidator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class AdminController  extends BackendController
 {
-    public function __construct()
+    protected $_repository;
+
+    public function __construct(AdminRepository $repository)
     {
+        $this->_repository = $repository;
     }
 
     public function index()
     {
-        $entities = Admin::withActive()->get();
+        $entities = $this->_repository->getList();
 
         $viewDatas = [
             'entities' => $entities
