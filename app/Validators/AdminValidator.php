@@ -33,9 +33,14 @@ class AdminValidator extends FormRequest
         ];
 
         // updating
-        if (!empty($request->id)) {
-            $rules['password'] = 'bail|min:6|max:64';
-            $rules['email'] = 'bail|required|email|max:128|unique:admins, email, ' . $request->id;
+        if (!empty(array_get($request, 'id', ''))) {
+            if (array_get($request, 'password', '')) {
+                $rules['password'] = 'bail|min:6|max:64';
+            } else {
+                $rules['password'] = 'bail';
+            }
+
+            $rules['email'] = 'bail|required|email|max:128|unique:admins,email,' . $request->id;
         }
 
 

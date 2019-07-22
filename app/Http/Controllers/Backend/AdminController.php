@@ -68,7 +68,7 @@ class AdminController  extends BackendController
         return view('backend.admin.edit', $viewDatas);
     }
 
-    public function update($id)
+    public function update(AdminValidator $adminValidator, $id)
     {
         $entity = Admin::findOrFail($id);
         $params = Input::all();

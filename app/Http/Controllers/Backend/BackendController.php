@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Base\BaseController;
+use Illuminate\Support\Facades\Input;
 
 class BackendController extends BaseController
 {

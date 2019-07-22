@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend\Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Backend\BackendController;
 
 class LoginController extends BackendController

@@ -46,7 +46,7 @@
                                     <span class="required color_red icon-required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="email" value="{{old('email') ? old('email') :getValueInputText($entity->email)}}" type="text"
+                                    <input name="email" value="{{old('email') ? old('email') : getValueInputText($entity->email)}}" type="text"
                                            class="form-control {{borderError($errors, 'email')}}"
                                            autocomplete="off" placeholder="Enter your email">
                                 </div>
@@ -82,6 +82,10 @@
                                     <button type="submit" class="btn_custom">Submit</button>
                                     <a class="btn_custom bg_grey" href="{{route('admin.index')}}">Back</a>
                                 </div>
+                            </div>
+
+                            <div>
+                                <input type="hidden" name="id" value="{{$entity->getKey()}}">
                             </div>
                         </form>
                     </div>
