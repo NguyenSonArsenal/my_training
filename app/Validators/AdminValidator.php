@@ -2,10 +2,12 @@
 
 namespace App\Validators;
 
+use App\Model\Entities\Admin;
+use App\Validators\Base\BaseValidator;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Http\FormRequest;
 
-class AdminValidator extends FormRequest
+class AdminValidator extends BaseValidator
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -43,12 +45,16 @@ class AdminValidator extends FormRequest
             $rules['email'] = 'bail|required|email|max:128|unique:admins,email,' . $request->id;
         }
 
-
         return $rules;
     }
 
-    public function messages()
+    protected function failedValidation(Validator $validator)
     {
-        return parent::messages();
+        $entity = new Admin();
+        $entity->fill(request()->all());
+
+        session()->flash('entity', $entity);
+
+        return parent::failedValidation($validator);
     }
 }

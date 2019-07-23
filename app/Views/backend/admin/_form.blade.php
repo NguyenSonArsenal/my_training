@@ -35,7 +35,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Name
                                     <span class="required color_red icon-required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="name" value="{{old('name') ? old('name') : getValueInputText($entity->name)}}" type="text"
+                                    <input name="name" value="{{ $entity->name }}" type="text"
                                            class="form-control {{borderError($errors, 'name')}}"
                                            placeholder="Enter your name">
                                 </div>
@@ -46,7 +46,7 @@
                                     <span class="required color_red icon-required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="email" value="{{old('email') ? old('email') : getValueInputText($entity->email)}}" type="text"
+                                    <input name="email" value="{{$entity->email}}" type="text"
                                            class="form-control {{borderError($errors, 'email')}}"
                                            autocomplete="off" placeholder="Enter your email">
                                 </div>

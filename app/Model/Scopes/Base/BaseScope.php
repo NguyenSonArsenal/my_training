@@ -6,6 +6,6 @@ namespace App\Model\Scopes\Base;
 trait BaseScope {
     public function scopeWithActive($query)
     {
-        return $query->where('del_flag', '=', 0)->orWhereNull('del_flag');
+        return $query->where('del_flag', '=', getConstant('ACTIVE', 0))->orWhereNull('del_flag');
     }
 }

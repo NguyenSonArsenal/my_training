@@ -62,7 +62,7 @@ class AdminController  extends BackendController
 
     public function edit($id)
     {
-        $entity = Admin::findOrFail($id);
+        $entity = array_get(session()->all(), 'entity', null) ? array_get(session()->all(), 'entity') : Admin::findOrFail($id);
 
         $viewDatas = [
             'entity' => $entity
