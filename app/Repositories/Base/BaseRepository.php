@@ -18,6 +18,6 @@ abstract class BaseRepository extends BaseRepo
 
     public function getList()
     {
-        return $this->getModel()->withActive()->get();
+        return $this->getModel()->withActive()->paginate(getConstant('BACKEND_PAGINATE', 20));
     }
 }

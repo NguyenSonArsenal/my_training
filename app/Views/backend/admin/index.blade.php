@@ -37,14 +37,17 @@
                                         </td>
                                         <td>{{ $entity->email }} </td>
                                         <td>{{ $entity->avatar }}</td>
-                                        <td>{{ $entity->getRoleTypeAlias() }}</td>
                                         <td>
-                                            <a href="{{route('admin.show', ['id' => $entity->getKey()])}}">
+                                            <button type="button" class="btn btn-xs {{$entity->isSuperAdmin() ? 'btn-success' : 'btn-info'}}">
+                                                {{ $entity->getRoleTypeAlias()}}</button>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.show', ['id' => $entity->ins_id])}}">
                                                 {{ $entity->getInsertUpdateId($entity->ins_id) }}
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.show', ['id' => $entity->getKey()])}}">
+                                            <a href="{{route('admin.show', ['id' => $entity->upd_id])}}">
                                                 {{ $entity->getInsertUpdateId($entity->upd_id) }}
                                             </a>
                                         </td>
@@ -56,14 +59,14 @@
                                                 </li>
 
                                                 <li>
-                                                    @if($entity->isEdited())
+                                                    @if($entity->allowEdited())
                                                         <a class="bg_green btn_custom_action"
                                                            href="{{route('admin.edit', ['id' => $entity->getKey()])}}">Edit</a>
                                                     @endif
                                                 </li>
 
                                                 <li>
-                                                    @if($entity->isDeleted())
+                                                    @if($entity->allowDeleted())
                                                         <button name="delete"
                                                                 data-form-action="{{ route('admin.destroy', $entity->id) }}"
                                                                 type="submit" class="btn_custom_action bg_grey">Delete
@@ -76,6 +79,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
+                            {{ $entities->links() }}
                         </div>
                     </div>
                 </div>

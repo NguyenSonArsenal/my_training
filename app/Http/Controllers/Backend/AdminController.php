@@ -29,7 +29,7 @@ class AdminController  extends BackendController
 
     public function create()
     {
-        $entity = new Admin();
+        $entity = array_get(session()->all(), 'entity', null) ? array_get(session()->all(), 'entity') : new Admin();
 
         $viewDatas = [
             'entity' => $entity
@@ -94,9 +94,8 @@ class AdminController  extends BackendController
 
     public function destroy($id)
     {
-        $entity = Admin::findOrFail($id);
-        $entity->fill([getSystemConfig('deleted_at_column', 'del_flag') => getConstant('NONE_ACTIVE', 1)]);
-        $entity->save();
+        $ids = $this->_repository->findIdsForDelete($id); // [2,3,4]
+        $this->_repository->deleteAdmin($ids);
 //        Session::flash('message', 'Successfully deleted the nerd!');
         return redirect()->back();
     }

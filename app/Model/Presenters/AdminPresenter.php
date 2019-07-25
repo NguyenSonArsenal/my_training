@@ -19,22 +19,19 @@ trait AdminPresenter
         return $this->role_type == getConstant('ADMIN_TYPE_ADMIN', 2);
     }
 
-    public function isDeleted()
+    public function allowDeleted()
     {
         $isCurrentLogin = $this->getKey() != getCurrentAdminId();
         return $isCurrentLogin && !$this->isSuperAdmin();
     }
 
-    public function isEdited()
+    public function allowEdited()
     {
-        $isCurrentLogin = $this->getKey() == getCurrentAdminId();
-        $currentAdminEntity = getCurrentAdminEntity();
-
-        if ($currentAdminEntity->role_type == getConstant('ADMIN_TYPE_SUPER_ADMIN')) {
-            return $isCurrentLogin || $this->isAdmin() || $this->isSuperAdmin();
+        if (getCurrentAdminEntity()->isSuperAdmin()) {
+            return true;
         }
 
-        return $isCurrentLogin || $this->isAdmin();
+        return $this->isAdmin();
     }
 
     public function getRoleType()

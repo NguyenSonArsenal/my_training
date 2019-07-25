@@ -5,5 +5,7 @@ return [
     'ADMIN_TYPE_ADMIN' => 2,
 
     'ACTIVE' => 0,
-    'NONE_ACTIVE' => 1
+    'UN_ACTIVE' => 1,
+
+    'BACKEND_PAGINATE' => 10,
 ];
