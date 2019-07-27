@@ -15,10 +15,9 @@
 
 .btn_custom {
     width: 75px;
-    margin-left: 15px;
     background: #00aebb;
     color: #fff;
-    padding: 6px 12px;
+    padding: 7px 12px;
     border-radius: 3px;
     display: inline-block;
     text-align: center;

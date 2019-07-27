@@ -67,7 +67,7 @@
                                     <span class="required color_red icon-required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select name="role_type" class="form-control {{borderError($errors, 'role_type')}}">
-                                        <option value="">Choose option</option>
+                                        <option value="">--- Choose ---</option>
                                         @foreach($entity->getRoleType() as $key => $value)
                                             <option value="{{ $key }}" {{ ($entity->role_type == $key) ? ' selected' : '' }}>{{ $value }}</option>
                                         @endforeach

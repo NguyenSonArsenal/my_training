@@ -34,3 +34,21 @@
     display: inline-block;
     width: 75px;
 }
+
+.admin-wrapper .search-admin {
+    margin: 15px 0;
+}
+
+.admin-wrapper .search-admin .input {
+    width: 200px;
+    display: inline-block;
+}
+.admin-wrapper .search-admin select[name='role_type'] {
+    width: 150px;
+    display: inline-block;
+}
+
+.admin-wrapper .x_content {
+    padding: 0;
+    margin-top: 0;
+}

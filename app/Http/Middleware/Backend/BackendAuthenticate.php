@@ -22,6 +22,7 @@ class BackendAuthenticate
 
     protected function _check()
     {
-        return getCurrentAdminEntity()->{getSystemConfig('deleted_at_column')};
+        //not logged in or deleted
+        return !getCurrentAdminEntity() || getCurrentAdminEntity()->{getSystemConfig('deleted_at_column')};
     }
 }

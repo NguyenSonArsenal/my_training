@@ -16,6 +16,20 @@
                         <div class="clearfix"></div>
                     </div>
 
+                    <!-- From search -->
+                    <form method="GET" action="{{route('admin.index')}}" class="search-admin form-horizontal">
+                        <input placeholder="Enter name" class="input form-control" name="name" type="search" value="{{request('name', '')}}">
+                        <input placeholder="Enter email" class="input form-control" name="email" type="search" value="{{request('email', '')}}">
+                        <select name="role_type" class="form-control">
+                            <option value="">--- Choose ---</option>
+                            <option value="{{getConstant('ADMIN_TYPE_ADMIN')}}"
+                                    {{ request('role_type', '') ==  getConstant('ADMIN_TYPE_ADMIN') ? ' selected' : '' }}>Admin</option>
+                            <option value="{{getConstant('ADMIN_TYPE_SUPER_ADMIN')}}"
+                                    {{ request('role_type', '') ==  getConstant('ADMIN_TYPE_SUPER_ADMIN') ? ' selected' : '' }}>Super Admin</option>
+                        </select>
+                        <button class="btn_custom" href="javascript:void(0)">Search</button>
+                    </form>
+
                     <div class="x_content">
                         <div class="table-responsive">
                             <table class="list-admin table table-striped jambo_table bulk_action">
