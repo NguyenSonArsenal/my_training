@@ -4,6 +4,9 @@
     <div class="admin-wrapper">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
+
+                @include('layouts.backend.elements._notification')
+
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>List admin</h2>
@@ -38,7 +41,8 @@
                                         <td>{{ $entity->email }} </td>
                                         <td>{{ $entity->avatar }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-xs {{$entity->isSuperAdmin() ? 'btn-success' : 'btn-info'}}">
+                                            <button type="button"
+                                                    class="btn btn-xs {{$entity->isSuperAdmin() ? 'btn-success' : 'btn-info'}}">
                                                 {{ $entity->getRoleTypeAlias()}}</button>
                                         </td>
                                         <td>

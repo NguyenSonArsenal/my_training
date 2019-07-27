@@ -13,10 +13,15 @@ class BackendAuthenticate
             return $next($request);
         }
 
-        if (!adminGuard()->check()) {
+        if ($this->_check()) {
             return redirect()->route('backend.login');
         }
 
         return $next($request);
+    }
+
+    protected function _check()
+    {
+        return getCurrentAdminEntity()->{getSystemConfig('deleted_at_column')};
     }
 }

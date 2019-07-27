@@ -46,7 +46,7 @@ class AdminController  extends BackendController
         $params['password'] = storePassword($params['password']);
         $entity->fill($params);
         $entity->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('notification', transMessage('create_success'));
     }
 
     public function show($id)
@@ -89,14 +89,13 @@ class AdminController  extends BackendController
 
         $entity->fill($params);
         $entity->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('notification', transMessage('update_success'));
     }
 
     public function destroy($id)
     {
-        $ids = $this->_repository->findIdsForDelete($id); // [2,3,4]
+        $ids = $this->_repository->findIdsForDelete($id); // [id1, id2, id3 ...]
         $this->_repository->deleteAdmin($ids);
-//        Session::flash('message', 'Successfully deleted the nerd!');
-        return redirect()->back();
+        return redirect()->back()->with('notification', transMessage('delete_success'));
     }
 }

@@ -22,8 +22,11 @@ class LoginController extends BackendController
     {
         $credentials = $request->only('email', 'password');
         if (adminGuard()->attempt($credentials)) {
-            return redirect()->route('dashboard');
+            if (!getCurrentAdminEntity()->{getSystemConfig('deleted_at_column')}) {
+                return redirect()->route('dashboard');
+            }
         }
+
         return $this->_backWithError(['errors' => transMessage('login_error')]);
     }
 
