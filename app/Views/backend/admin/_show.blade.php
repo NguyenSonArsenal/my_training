@@ -5,7 +5,7 @@
                 <div class="x_title">
                     <h2>Detail admin</h2>
                     <div class="nav navbar-right panel_toolbox">
-                        <a class="btn_custom bg_grey" href="{{route('admin.index')}}">Back</a>
+                        <a class="btn_custom bg_grey" href="{{backUrl(route('admin.index'))}}">Back</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -77,11 +77,11 @@
                             <div class="form-group">
                                 <label class="text-right col-md-3 col-sm-3 col-xs-12">
                                     @if ($entity->allowEdited())
-                                        <a class="btn_custom" href="{{route('admin.edit', ['id' => $entity->getKey()])}}">Edit</a>
+                                        <a class="btn_custom" href="{{backUrl(route('admin.edit', ['id' => $entity->getKey()]))}}">Edit</a>
                                     @endif
                                 </label>
                                 <label class="text-left col-md-3 col-sm-3 col-xs-12">
-                                    <a class="btn_custom bg_grey" href="{{route('admin.index')}}">Back</a>
+                                    <a class="btn_custom bg_grey" href="{{backUrl(route('admin.index'))}}">Back</a>
                                 </label>
                             </div>
                         </form>

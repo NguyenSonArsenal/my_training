@@ -130,4 +130,20 @@ if (!function_exists('borderError')) {
     }
 }
 
+if (!function_exists('backUrl')) {
+
+    function backUrl($url, $params = [])
+    {
+        return $url . '?' . http_build_query(array_merge(request()->query(), $params));
+    }
+}
+
+if (!function_exists('getBackUrl')) {
+
+    function getBackUrl($url)
+    {
+        return $url . '?' . request()->getQueryString();
+    }
+}
+
 

@@ -89,7 +89,7 @@ class AdminController  extends BackendController
 
         $entity->fill($params);
         $entity->save();
-        return redirect()->route('admin.index')->with('notification', transMessage('update_success'));
+        return redirect()->route('admin.index', $this->_getArrayQueryString())->with('notification', transMessage('update_success'));
     }
 
     public function destroy($id)
