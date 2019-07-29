@@ -24,6 +24,8 @@ abstract class BaseRepository extends BaseRepo
         $searchName = array_get($params, 'name', '');
         $searchEmail = array_get($params, 'email', '');
         $searchRoleType = array_get($params, 'role_type', '');
+        $sortType = array_get($params, 'sort_type', '');
+        $sortField = array_get($params, 'sort_field', '');
 
         if ($searchName) {
             $query->where('name', $searchName);
@@ -35,6 +37,10 @@ abstract class BaseRepository extends BaseRepo
 
         if ($searchRoleType) {
             $query->where('role_type', $searchRoleType);
+        }
+
+        if ($sortField) {
+            $query->orderBy($sortField, $sortType);
         }
 
         return $query->paginate(getConstant('BACKEND_PAGINATE', 20));

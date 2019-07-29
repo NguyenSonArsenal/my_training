@@ -18,14 +18,20 @@
 
                     <!-- From search -->
                     <form method="GET" action="{{route('admin.index')}}" class="search-admin form-horizontal">
-                        <input placeholder="Enter name" class="input form-control" name="name" type="search" value="{{request('name', '')}}">
-                        <input placeholder="Enter email" class="input form-control" name="email" type="search" value="{{request('email', '')}}">
+                        <input placeholder="Enter name" class="input form-control" name="name" type="search"
+                               value="{{request('name', '')}}">
+                        <input placeholder="Enter email" class="input form-control" name="email" type="search"
+                               value="{{request('email', '')}}">
                         <select name="role_type" class="form-control">
                             <option value="">--- Choose ---</option>
                             <option value="{{getConstant('ADMIN_TYPE_ADMIN')}}"
-                                    {{ request('role_type', '') ==  getConstant('ADMIN_TYPE_ADMIN') ? ' selected' : '' }}>Admin</option>
+                                    {{ request('role_type', '') ==  getConstant('ADMIN_TYPE_ADMIN') ? ' selected' : '' }}>
+                                Admin
+                            </option>
                             <option value="{{getConstant('ADMIN_TYPE_SUPER_ADMIN')}}"
-                                    {{ request('role_type', '') ==  getConstant('ADMIN_TYPE_SUPER_ADMIN') ? ' selected' : '' }}>Super Admin</option>
+                                    {{ request('role_type', '') ==  getConstant('ADMIN_TYPE_SUPER_ADMIN') ? ' selected' : '' }}>
+                                Super Admin
+                            </option>
                         </select>
                         <button class="btn_custom" href="javascript:void(0)">Search</button>
                     </form>
@@ -35,13 +41,23 @@
                             <table class="list-admin table table-striped jambo_table bulk_action">
                                 <thead>
                                 <tr class="headings">
-                                    <th class="column-title">Id</th>
-                                    <th class="th_name column-title">Name</th>
+                                    <th class="column-title">
+                                        <a href="{{appendStringSort('id')}}" class="link_sort">Id</a>
+                                    </th>
+                                    <th class="th_name column-title">
+                                        <a href="{{appendStringSort('name')}}" class="link_sort">Name</a>
+                                    </th>
                                     <th class="th_email column-title">Email</th>
                                     <th class="th_avatar column-title">Avatar</th>
                                     <th class="th_role column-title">Role_type</th>
-                                    <th class="th_role column-title">Created_by</th>
-                                    <th class="th_role column-title">Updated_by</th>
+                                    <th class="th_name column-title">Created_by</th>
+                                    <th class="th_name column-title">Updated_by</th>
+                                    <th class="th_time column-title">
+                                        <a href="{{appendStringSort(getSystemConfig('created_at_column'))}}" class="link_sort">Created_at</a>
+                                    </th>
+                                    <th class="th_time column-title">
+                                        <a href="{{appendStringSort(getSystemConfig('updated_at_column'))}}" class="link_sort">Updated_at</a>
+                                    </th>
                                     <th class="column-title no-link last"><span class="nobr">Action</span></th>
                                 </tr>
                                 </thead>
@@ -69,6 +85,8 @@
                                                 {{ $entity->getInsertUpdateId($entity->upd_id) }}
                                             </a>
                                         </td>
+                                        <td> {{ $entity->getCreatedAt() }}</td>
+                                        <td> {{ $entity->getUpdatedAt() }}</td>
                                         <td>
                                             <ul class="list-action">
                                                 <li>

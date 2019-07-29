@@ -3,10 +3,14 @@
 }
 
 .list-admin .headings .th_name, .list-admin .headings .th_email  {
-    width: 200px;
+    width: 150px;
 }
 
 .list-admin .headings .th_avatar {
+    width: 100px;
+}
+
+.list-admin .headings .th_time {
     width: 100px;
 }
 
@@ -15,7 +19,7 @@
 }
 
 .list-admin .headings th:last-child {
-    width: 220px;
+    width: 245px;
 }
 
 .list-admin th.column-title {
@@ -32,7 +36,7 @@
 
 .list-action li {
     display: inline-block;
-    width: 75px;
+    width: 60px;
 }
 
 .admin-wrapper .search-admin {
@@ -51,4 +55,9 @@
 .admin-wrapper .x_content {
     padding: 0;
     margin-top: 0;
+}
+
+.link_sort, .link_sort:hover {
+    color: white;
+    text-decoration: underline;
 }

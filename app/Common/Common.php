@@ -32,7 +32,7 @@ if (!function_exists('loadImageBackEnd')) {
      */
     function loadImageBackEnd($path)
     {
-        echo asset( '/images/backend/' . ltrim($path, '/'));
+        echo asset('/images/backend/' . ltrim($path, '/'));
     }
 }
 
@@ -143,6 +143,41 @@ if (!function_exists('getBackUrl')) {
     function getBackUrl($url)
     {
         return $url . '?' . request()->getQueryString();
+    }
+}
+
+
+if (!function_exists('appendStringSort')) {
+
+    /**
+     * @param $sortField
+     * @return string
+     * add sort to query string
+     */
+    function appendStringSort($sortField)
+    {
+        $queryString = request()->query();
+        $sortTypeUrl = array_get($queryString, 'sort_type', '');
+        $sortFieldUrl = array_get($queryString, 'sort_field', '');
+
+        $sortType = 'desc';
+
+        if ($sortTypeUrl && $sortFieldUrl == $sortField) {
+            if ($sortTypeUrl == 'desc') {
+                $sortType = 'asc';
+            } else if ($sortTypeUrl == 'asc') {
+                $sortType = 'desc';
+            }
+        }
+
+        $querySort = [
+            'sort_type' => $sortType,
+            'sort_field' => $sortField
+        ];
+
+        $query = array_merge($queryString, $querySort);
+
+        return request()->url() . "?" . http_build_query($query);
     }
 }
 

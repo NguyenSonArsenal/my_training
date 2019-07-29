@@ -24,3 +24,5 @@
 
 <!-- System -->
 <script src="<?php loadFileBackend('system.js');?>"></script>
+
+<script src="<?php loadFileBackend('autoload/admin.js');?>"></script>
