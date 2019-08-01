@@ -11,7 +11,8 @@
                     <div class="x_title">
                         <h2>List admin</h2>
                         <div class="nav navbar-right panel_toolbox">
-                            <a class="btn_custom" href="{{backUrl(route('admin.create'))}}">Add</a>
+                            <a class="btn_custom" href="{{Url::addBackUrl(route('admin.create'))}}">Add</a>
+                            <a class="btn_custom" href="{{Url::addBackUrl(route('admin.create'))}}">Add2</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
