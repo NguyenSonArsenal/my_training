@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Url;
 use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('authRoutes')) {
@@ -130,19 +131,19 @@ if (!function_exists('borderError')) {
     }
 }
 
-if (!function_exists('backUrl')) {
+if (!function_exists('addBackUrl')) {
 
-    function backUrl($url, $params = [])
+    function addBackUrl($routeName, $params = [])
     {
-        return $url . '?' . http_build_query(array_merge(request()->query(), $params));
+        return Url::addbackurl($routeName, $params);
     }
 }
 
 if (!function_exists('getBackUrl')) {
 
-    function getBackUrl($url)
+    function getBackUrl()
     {
-        return $url . '?' . request()->getQueryString();
+        return Url::getBackUrl();
     }
 }
 

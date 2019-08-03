@@ -11,8 +11,7 @@
                     <div class="x_title">
                         <h2>List admin</h2>
                         <div class="nav navbar-right panel_toolbox">
-                            <a class="btn_custom" href="{{Url::addBackUrl(route('admin.create'))}}">Add</a>
-                            <a class="btn_custom" href="{{Url::addBackUrl(route('admin.create'))}}">Add2</a>
+                            <a class="btn_custom" href="{{route('admin.create')}}">Add</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -92,13 +91,13 @@
                                             <ul class="list-action">
                                                 <li>
                                                     <a class="btn_show btn_custom_action"
-                                                       href="{{backUrl(route('admin.show', ['id' => $entity->getKey()]))}}">View</a>
+                                                       href="{{addBackUrl(route('admin.show', ['id' => $entity->getKey()]))}}">View</a>
                                                 </li>
 
                                                 <li>
                                                     @if($entity->allowEdited())
                                                         <a class="bg_green btn_custom_action"
-                                                           href="{{backUrl(route('admin.edit', ['id' => $entity->getKey()]))}}">Edit</a>
+                                                           href="{{addBackUrl(route('admin.edit', ['id' => $entity->getKey()]))}}">Edit</a>
                                                     @endif
                                                 </li>
 

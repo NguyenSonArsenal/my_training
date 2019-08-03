@@ -11,43 +11,53 @@ class Url
 
     public static function addBackUrl($url, $params = [])
     {
+        // create key
         $key = self::_createKey();
-        $fullUrl = request()->fullUrl();
         $params[self::QUERY] = $key;
 
+        $queryString = request()->getQueryString();
+
+        // store session
+        $paramsQuery = self::_getAllParams($queryString);
+        $fullUrl = request()->url() . '?'. http_build_query($paramsQuery);
         self::_storeSession($key, $fullUrl);
-        return self::_genTargetUrl($url, $params);
+
+        // url target
+        $params = array_merge($paramsQuery, $params);
+        return $url . '?' . http_build_query($params);
     }
 
-    protected static function _buildParamsQuery($params)
+    /**
+     * all params url with end of array is _o
+     * @param $queryString
+     * @return mixed
+     */
+    protected static function _getAllParams($queryString) // string => arr with _o is end of element
     {
-        $params = array_merge(request()->query(), $params);
-        return http_build_query($params);
+        parse_str($queryString, $arrQueryStr); // string to array
+        $tmp = array_get($arrQueryStr, self::QUERY, false);
+        if ($tmp) {
+            $keys = array_keys($arrQueryStr);
+            if (array_get($keys, 0, '') == self::QUERY) {
+                $arrQueryStr = array_slice($arrQueryStr, 1);
+                $arrQueryStr[self::QUERY] = $tmp;
+            }
+        }
+        return $arrQueryStr;
     }
 
-    public static function getBackUrl($url, $params = [])
+    public static function getBackUrl()
     {
         $allSession = session()->all();
         $listBackUrl = array_get($allSession, '_backUrl', []);
+        $oldKey = request()->get(self::QUERY, false);
 
-        $queryString = request()->getQueryString();
-        $queryArray = self::_parseQueryStringToArray($queryString, $params);
-
-        // store new session
-        unset($queryArray[self::QUERY]);
-
-        $key = self::_createKey();
-        $url = request()->url();
-        self::_storeSession($key, self::_buildParamsQuery($queryArray));
-
-        $oldKey = array_get($queryArray, self::QUERY);
-        $oldUrl = array_get($listBackUrl, $oldKey, '');
-        return $oldUrl;
+        return $urlOld = array_get($listBackUrl, $oldKey);
     }
 
     protected static function _storeSession($key, $value)
     {
-        session(self::_BACKURL, [$key => $value]);
+        session([self::_BACKURL . '.' . $key => $value]);
     }
 
     /**
@@ -59,16 +69,9 @@ class Url
         return time() + rand(10, 100);
     }
 
-    protected static function _parseQueryStringToArray($queryString, $params)
+    protected static function _parseQueryStringToArray($queryString, $params = [])
     {
         parse_str($queryString, $result);
         return array_merge($result, $params);
     }
-
-    protected static function _genTargetUrl($urlOrigin, $params = [])
-    {
-        return $urlOrigin . '?' . self::_buildParamsQuery($params);
-    }
-
-
 }

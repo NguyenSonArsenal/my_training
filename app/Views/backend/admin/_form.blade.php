@@ -5,7 +5,7 @@
                 <div class="x_title">
                     <h2>{{empty($entity->getKey()) ? "Create" : "Update"}} admin</h2>
                     <div class="nav navbar-right panel_toolbox">
-                        <a class="btn_custom bg_grey" href="{{Url::getBackUrl(route('admin.index'))}}">Back</a>
+                        <a class="btn_custom bg_grey" href="{{getBackUrl()}}">Back</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
                                     <button type="submit" class="btn_custom">Submit</button>
-                                    <a class="btn_custom bg_grey" href="{{getBackUrl(route('admin.index'))}}">Back</a>
+                                    <a class="btn_custom bg_grey" href="{{getBackUrl()}}">Back</a>
                                 </div>
                             </div>
 
