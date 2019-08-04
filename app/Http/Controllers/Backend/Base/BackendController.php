@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Base;
 
 use App\Http\Controllers\Base\BaseController;
 use Illuminate\Support\Facades\Input;

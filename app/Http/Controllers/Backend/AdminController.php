@@ -6,6 +6,7 @@ use App\Model\Entities\Admin;
 use App\Repositories\AdminRepository;
 use App\Validators\AdminValidator;
 use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Backend\Base\BackendController;
 
 class AdminController  extends BackendController
 {

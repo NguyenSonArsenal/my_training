@@ -33,6 +33,7 @@
                         </ul>
                     </li>
                     <li><a class="" href="{{route('admin.index')}}"><i class="fa fa-home"></i> Admin </a></li>
+                    <li><a class="" href="{{route('post.index')}}"><i class="fa fa-home"></i> Posts </a></li>
                 </ul>
             </div>
         </div>

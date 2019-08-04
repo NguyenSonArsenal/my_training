@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 128);
-            $table->string('password', 128);
-            $table->string('email', 128);
-            $table->string('avatar', 128)->nullable();
-            $table->string('role_type')->comment('super:1, admin:2');
+            $table->integer('status')->default(1)->comment('active:1, disable:2');
+            $table->string('title', 70);
+            $table->string('description', 170);
+            $table->text('content');
             $table->integer('ins_id')->length(11);
             $table->integer('upd_id')->length(11)->nullable();
             $table->timestamp('ins_datetime');
@@ -35,6 +34,7 @@ class CreateAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('posts');
     }
 }
+

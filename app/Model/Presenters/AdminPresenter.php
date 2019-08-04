@@ -6,7 +6,7 @@ trait AdminPresenter
 {
     public function getRoleTypeAlias()
     {
-        return $this->role_type == getConstant('ADMIN_TYPE_SUPER_ADMIN') ? "SuperAdmin" : "Admin";
+        return $this->isSuperAdmin() ? "SuperAdmin" : "Admin";
     }
 
     public function isSuperAdmin()

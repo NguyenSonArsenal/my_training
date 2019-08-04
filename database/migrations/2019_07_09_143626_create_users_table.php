@@ -18,12 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('name', 128);
             $table->string('email', 128);
             $table->string('facebook_id', 64);
-            $table->string('status', 64)->comment('1:hoạt động, 2:khóa');
-            $table->integer('ins_id')->length(11)->comment('登録者ID');
-            $table->integer('upd_id')->length(11)->comment('更新者ID')->nullable();
-            $table->timestamp('ins_datetime')->comment('登録日時');
-            $table->timestamp('upd_datetime')->comment('登録日時')->nullable();
-            $table->char('del_flag')->default(0)->comment('削除フラグ');
+            $table->string('status', 64)->comment('1:active, 2:disable');
+            $table->integer('ins_id')->length(11);
+            $table->integer('upd_id')->length(11)->nullable();
+            $table->timestamp('ins_datetime');
+            $table->timestamp('upd_datetime')->nullable();
+            $table->char('del_flag')->default(0);
         });
     }
 

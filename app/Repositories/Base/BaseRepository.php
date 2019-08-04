@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Base;
 
-use Illuminate\Container\Container as Application;
 use Prettus\Repository\Eloquent\BaseRepository as BaseRepo;
 
 abstract class BaseRepository extends BaseRepo
