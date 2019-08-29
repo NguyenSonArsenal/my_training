@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Auth;
 
+use App\Http\Controllers\Backend\Base\BackendController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Backend\BackendController;
 
 class LoginController extends BackendController
 {
